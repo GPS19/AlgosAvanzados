@@ -18,21 +18,31 @@ vector<string> readCodes(vector<string> codeFiles)
     return codes;
 }
 
-void printResults(Transmission T, vector<string> codes)
+void printPartOne(Transmission T, vector<string> codes)
 {
     for (int i = 0; i < codes.size(); i++)
     {
-        vector<int> a(T.searchCode(codes[i]));
-        if (a[0])
+        vector<int> partOne(T.searchCode(codes[i]));
+        if (partOne[0])
         {
             cout << "true"
-                 << " " << a[1] << " " << a[2] << endl;
+                 << " " << partOne[1] << " " << partOne[2] << endl;
         }
         else
         {
             cout << "false" << endl;
         }
     }
+}
+
+void printPartTwo(Transmission T)
+{
+    vector<int> partTwo(T.findLongestPalindrome());
+    for (int i = 0; i < partTwo.size(); i++)
+    {
+        cout << partTwo[i] << " ";
+    }
+    cout << endl;
 }
 
 int main()
@@ -42,7 +52,10 @@ int main()
 
     //vector<string> codeFiles ();
     vector<string> codes(readCodes({"mcode1.txt", "mcode2.txt", "mcode3.txt"}));
-    
-    printResults(transmission1, codes);
-    printResults(transmission2, codes);
+
+    printPartOne(transmission1, codes);
+    printPartOne(transmission2, codes);
+    cout << endl;
+    printPartTwo(transmission1);
+    printPartTwo(transmission2);
 }
