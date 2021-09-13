@@ -68,6 +68,6 @@ int main()
     cout << endl;
     printPartTwo(transmission1);
     printPartTwo(transmission2);
-    //
+    cout << endl;
     printPartThree(transmission1, transmission2);
 }

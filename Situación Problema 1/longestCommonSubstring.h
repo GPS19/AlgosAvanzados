@@ -17,18 +17,7 @@ public:
         int n = text2.length() + 1;
 
         // initialization
-        int dp[m][n];
-
-        // ------- We fill the first row and col with 0s because when no characters are presented in text1 or tex2, the default longest common substring is 0 -----
-
-        for (int i = 0; i < m; i++) // This will result in column in the first column being 0
-        {
-            dp[i][0] = 0;
-        }
-        for (int j = 0; j < n; j++) // This will result in the first row being 0
-        {
-            dp[0][j] = 0;
-        }
+        vector<vector<int>> dp(m, vector<int>(n, 0));
 
         // dynamic programming
         for (int i = 1; i < m; i++)
