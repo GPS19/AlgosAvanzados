@@ -8,7 +8,7 @@ using namespace std;
 class Search
 {
 public:
-    int badCharacterRule(map<char, vector<int> > &R, int i, char T)
+    int badCharacterRule(map<char, vector<int>> &R, int i, char T)
     {
         if (R.find(T) != R.end()) // check if the letter exists.
         {
@@ -23,13 +23,13 @@ public:
         return i + 1; // return the size of the move that we have to do.
     }
 
-    vector<int> booyerMore(string &txt, string &pattern)
+    vector<int> boyerMoore(string &txt, string &pattern)
     {
         int size = pattern.length();
         vector<int> ans;
 
         // Bad Charachter preprocessing
-        map<char, vector<int> > Bad; // map with letters with index in pattern.
+        map<char, vector<int>> Bad; // map with letters with index in pattern.
         for (int i = 0; i < size; i++)
         {
             //fill the map and vectors.
