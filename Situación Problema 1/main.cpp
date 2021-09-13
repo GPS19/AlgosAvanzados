@@ -45,6 +45,16 @@ void printPartTwo(Transmission T)
     cout << endl;
 }
 
+void printPartThree(Transmission t1, Transmission t2)
+{
+    vector<int> partThree(t1.findLongestCommonSubstring(t2));
+    for (int i = 0; i < partThree.size(); i++)
+    {
+        cout << partThree[i] << " ";
+    }
+    cout << endl;
+}
+
 int main()
 {
     Transmission transmission1("transmission1.txt");
@@ -58,4 +68,6 @@ int main()
     cout << endl;
     printPartTwo(transmission1);
     printPartTwo(transmission2);
+    //
+    printPartThree(transmission1, transmission2);
 }

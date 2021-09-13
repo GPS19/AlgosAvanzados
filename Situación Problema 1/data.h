@@ -3,6 +3,7 @@
 #include <fstream>
 #include "boyerMoore.h"
 #include "longestPalindrome.h"
+#include "longestCommonSubstring.h"
 
 using namespace std;
 
@@ -63,6 +64,28 @@ public:
                 ans[0] = i;
                 ans[1] = a[0];
                 ans[2] = a[1];
+            }
+        }
+
+        return ans;
+    }
+
+    vector<int> findLongestCommonSubstring(Transmission t2)
+    {
+        LCS longesCSubstring;
+        vector<int> ans(3, 0);
+
+        for (int i = 0; i < transmission.size(); i++)
+        {
+            for (int j = 0; j < t2.transmission.size(); j++)
+            {
+                vector<int> a(longesCSubstring.longestCommonSubstring(transmission[i], t2.transmission[j]));
+                if (a.at(0) > ans.at(2))
+                {
+                    ans.at(0) = i;
+                    ans.at(1) = a.at(1);
+                    ans.at(2) = a.at(0);
+                }
             }
         }
 
