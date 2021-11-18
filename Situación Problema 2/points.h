@@ -6,6 +6,7 @@
 
 using namespace std;
 
+#pragma once
 class Point
 {
 public:
