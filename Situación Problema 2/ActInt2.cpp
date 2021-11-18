@@ -10,11 +10,11 @@ Santiago Kohn A01029109
 
 using namespace std;
 
-int main(int argc, char const *argv[])
+int main()
 {
     Zones zones("input.txt");
-    cout << ".h\n";
+    zones.printGraphDistance();
     zones.DistanceGraph.kruskal();
-    zones.DistanceGraph.printMST();
+    //zones.DistanceGraph.printMST();
     return 0;
 }

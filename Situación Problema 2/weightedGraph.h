@@ -31,14 +31,13 @@ public:
 
 class GraphWeighted
 {
-private:
+public:
     vector<vector<int>> adj; // adjacency metrix
     vector<Edge> edges;
     vector<Edge> mst; // Minimu Spanning Tree
     vector<int> parent;
     int V;            // Number of vertices
 
-public:
     GraphWeighted() {}
     GraphWeighted(int V_)
     {
@@ -89,6 +88,7 @@ public:
 
     void kruskal()
     {
+        cout << "jj";
         stable_sort(edges.begin(), edges.end());
         
         int srcParent, dstParent;

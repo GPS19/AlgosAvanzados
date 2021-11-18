@@ -27,7 +27,6 @@ public:
         string line;
         getline(MyFile, line, '\n');
         n = stoi(line);
-        cout << n << endl;
 
         DistanceGraph.setNodes(n);
         transmisionGraph.setNodes(n);
@@ -38,34 +37,30 @@ public:
         int j = 0;
         while (j < n)
         {
-            cout << j << " - " << line;
             addToGraph(DistanceGraph, line, j);
             getline(MyFile, line, '\n');
             j++;
         }
         getline(MyFile, line, '\n');
 
-        // j = 0;
-        // while (line != "\n")
-        // {
-        //     addToGraph(transmisionGraph, line, j);
-        //     getline(MyFile, line, '\n');
-        //     j++;
-        // }
-
-
+        j = 0;
+        while (j < n)
+        {
+            addToGraph(transmisionGraph, line, j);
+            getline(MyFile, line, '\n');
+            j++;
+        }
     }
 
-    void addToGraph(GraphWeighted &graph, string line, int j)
+    void addToGraph(GraphWeighted &graph, string &line, int j)
     {
         string temp = "";
         int k = 0;
-        //cout << j << endl;
+
         for (int i = 0; i < line.length(); i++)
         {
             if (line[i] == ' ')
             {
-                //cout << temp << endl;
                 graph.addEdge(j, k, stoi(temp));
                 temp = "";
                 k++;
@@ -74,6 +69,18 @@ public:
             {
                 temp.push_back(line[i]);
             }
+        }
+    }
+
+    void printGraphDistance()
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                cout << DistanceGraph.adj[i][j] << " ";
+            }
+            cout << endl;
         }
     }
 };
