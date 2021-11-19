@@ -36,7 +36,7 @@ public:
     vector<Edge> edges;
     vector<Edge> mst; // Minimu Spanning Tree
     vector<int> parent;
-    int V;            // Number of vertices
+    int V; // Number of vertices
 
     GraphWeighted() {}
     GraphWeighted(int V_)
@@ -65,6 +65,7 @@ public:
         for (int i = 0; i < V; i++)
         {
             adj.push_back(vector<int>(V));
+            parent.push_back(i);
         }
     }
 
@@ -88,9 +89,8 @@ public:
 
     void kruskal()
     {
-        cout << "jj";
         stable_sort(edges.begin(), edges.end());
-        
+
         int srcParent, dstParent;
         for (int i = 0; i < edges.size(); i++)
         {
@@ -109,7 +109,7 @@ public:
     {
         for (int i = 0; i < mst.size(); i++)
         {
-            cout << mst[i].src << " " << mst[i].dst << " " << mst[i].weight << endl;
+            cout << "(" << mst[i].src << ", " << mst[i].dst << ")\n"; //<< mst[i].weight << endl;
         }
         cout << endl;
     }
@@ -119,7 +119,7 @@ public:
         /*
         floydWarshall algoritm recive two intergers, the start and finish of the path that we want.
         */
-        vector<vector<int>> dist(V, vector<int>(V, INT16_MAX));
+        vector<vector<int>> dist(adj.begin(), adj.end());
         vector<vector<int>> next(V, vector<int>(V, -1));
 
         // setuo the distance matrix and next matrix, copy the adjacency matrix to distance and if isn't infinit add to next.
@@ -127,11 +127,7 @@ public:
         {
             for (int j = 0; j < V; j++)
             {
-                dist[i][j] = adj[i][j];
-                if (dist[i][j] != INT16_MAX)
-                {
-                    next[i][j] = j;
-                }
+                next[i][j] = j;
             }
         }
 
@@ -157,7 +153,7 @@ public:
         while (actualNode != dst)
         {
             nextNode = next[actualNode][dst];
-            cout << actualNode << " " << nextNode << " " << endl;
+            cout << actualNode << " " << nextNode << endl;
             actualNode = nextNode;
         }
     }
@@ -198,7 +194,7 @@ public:
     float fordFulkerson(int s, int f)
     {
         vector<vector<int>> graphFC(adj); // graph to modify the flow and capacity.
-        vector<int> parent(V, -1);          // to check the paths with the bfs
+        vector<int> parent(V, -1);        // to check the paths with the bfs
         int max_flow = 0;
 
         while (bfs(graphFC, s, f, parent))
@@ -222,6 +218,7 @@ public:
             max_flow += flow;
         }
 
+        cout << max_flow << endl;
         return max_flow;
     }
 };

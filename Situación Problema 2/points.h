@@ -53,7 +53,7 @@ public:
         }
 
         tuple<Point, Point, float> a1 = nearlyPoints(vector<Point>(points.begin(), points.begin() + mid), mid);
-        tuple<Point, Point, float> a2 = nearlyPoints(vector<Point>(points.begin() + mid, points.end()), mid);
+        tuple<Point, Point, float> a2 = nearlyPoints(vector<Point>(points.begin() + mid, points.end()), (mid*2 < n) ? mid+1 : mid);
 
         // Min distance of two parts.
         float d;
@@ -95,7 +95,6 @@ public:
                 }
             }
         }
-
         return a;
     }
 };

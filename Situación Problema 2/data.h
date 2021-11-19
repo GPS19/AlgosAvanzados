@@ -50,6 +50,22 @@ public:
             getline(MyFile, line, '\n');
             j++;
         }
+        getline(MyFile, line, '\n');
+
+        while(!MyFile.eof())
+        {
+            getline(MyFile, line, '(');
+            getline(MyFile, line, ',');
+            if (line == "")
+                break;
+            int x = stoi(line);
+            getline(MyFile, line, ')');
+            int y = stoi(line);
+            
+            coordinates.push_back(Point(x, y));
+        }
+
+        MyFile.close();
     }
 
     void addToGraph(GraphWeighted &graph, string &line, int j)
@@ -70,17 +86,6 @@ public:
                 temp.push_back(line[i]);
             }
         }
-    }
-
-    void printGraphDistance()
-    {
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < n; j++)
-            {
-                cout << DistanceGraph.adj[i][j] << " ";
-            }
-            cout << endl;
-        }
+        graph.addEdge(j, k, stoi(temp));
     }
 };
