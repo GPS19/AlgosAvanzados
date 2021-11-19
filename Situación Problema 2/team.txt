@@ -1,0 +1,10 @@
+Pablo Yamamoto Magaña       - A01022382
+Gianluca Beltrán Bianchi    - A01029098
+Santiago Kohn Espinosa      - A01029109
+
+Gianluca Beltran se enfocó en la pregunta 1.
+Pablo Yamamoto se enfocó en la pregunta 2.
+Santiago Kohn se enfocó en la pregunta 3 y 4.
+El main fue realizado entre todos.
+
+
